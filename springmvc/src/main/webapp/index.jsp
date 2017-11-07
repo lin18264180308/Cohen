@@ -9,15 +9,19 @@
 <body>
     <br /><br />
     <form action="testModelAndViewParams" method="post">
+        username:<input name="username" value="" /><br />
+        password:<input name="password" value="" /><br />
+        province:<input name="address.province" value="" /><br />
+        city:<input name="address.city" value="" /><br />
         <input type="submit" value="submit" />
     </form>
-    <form action="testPojoParams" method="post">
+    <!-- <form action="testPojoParams" method="post">
 	    username:<input name="username" value="" /><br />
 	    password:<input name="password" value="" /><br />
 	    province:<input name="address.province" value="" /><br />
 	    city:<input name="address.city" value="" /><br />
 	    <input type="submit" value="submit" />
-    </form>
+    </form> -->
     <!-- 
     <br /><br />
     <span>rest风格的crud</span>

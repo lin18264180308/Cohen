@@ -34,7 +34,7 @@ public class TestParamsController {
     }
 
     @RequestMapping(value = "/testModelAndViewParams", method = RequestMethod.POST)
-    public ModelAndView testModelAndViewParams() {
+    public ModelAndView testModelAndViewParams(User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("success");
         mv.addObject("time", new Date());

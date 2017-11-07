@@ -46,7 +46,10 @@
     </build>
 
     <properties>
+    <!-- 
         <spring.version>4.3.10.RELEASE</spring.version>
+     -->
+        <spring.version>5.0.1.RELEASE</spring.version>
     </properties>
 
     <dependencies>
