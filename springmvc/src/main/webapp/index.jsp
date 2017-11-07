@@ -7,14 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <form action="testModelAttribute" method="post">
+        id:<input type="hidden" name="id" value="${requestScope.user.id}" />
+        username:<input type="text" name="username" value="${requestScope.user.username}" /><br />
+        province:<input type="text" name="address.province" value="山东" /><br />
+        city:<input type="text" name="address.city" value="济南" /><br />
+        <input type="submit" value="submit" />
+    </form>
+    <!-- <form action="testSessionAttribute" method="post">
+        <input type="submit" value="submit" />
+    </form> -->
+    <!-- <form action="testModelMapParams" method="post">
+        <input type="submit" value="submit" />
+    </form> -->
     <br /><br />
-    <form action="testModelAndViewParams" method="post">
+    <!-- <form action="testModelAndViewParams" method="post">
         username:<input name="username" value="" /><br />
         password:<input name="password" value="" /><br />
         province:<input name="address.province" value="" /><br />
         city:<input name="address.city" value="" /><br />
         <input type="submit" value="submit" />
-    </form>
+    </form> -->
     <!-- <form action="testPojoParams" method="post">
 	    username:<input name="username" value="" /><br />
 	    password:<input name="password" value="" /><br />
