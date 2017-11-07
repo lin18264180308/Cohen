@@ -22,18 +22,26 @@
 
     <build>
        <plugins>
-          <!-- tomcat7 -->
+
               <plugin>  
-                  <groupId>org.apache.tomcat.maven</groupId>  
-                  <artifactId>tomcat7-maven-plugin</artifactId>  
-                  <version>2.1</version>  
-                  <configuration>  
-                      <port>8080</port>  
-                      <path>/springmvc</path>  
-                      <uriEncoding>UTF-8</uriEncoding>  
-                      <server>tomcat7</server>  
-                  </configuration>  
-              </plugin>  
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-compiler-plugin</artifactId>
+                  <version>3.5.1</version>
+              </plugin>
+
+              <!-- tomcat7 -->
+              <plugin>  
+                  <groupId>org.apache.tomcat.maven</groupId>
+                  <artifactId>tomcat7-maven-plugin</artifactId>
+                  <version>2.2</version>
+                  <configuration>
+                      <port>8080</port>
+                      <path>/springmvc</path>
+                      <uriEncoding>UTF-8</uriEncoding>
+                      <server>tomcat7</server>
+                  </configuration>
+              </plugin>
+
           </plugins>
     </build>
 
