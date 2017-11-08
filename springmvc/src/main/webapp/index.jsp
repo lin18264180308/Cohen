@@ -8,8 +8,8 @@
 </head>
 <body>
     <form action="testModelAttribute" method="post">
-        id:<input type="hidden" name="id" value="${requestScope.user.id}" />
-        username:<input type="text" name="username" value="${requestScope.user.username}" /><br />
+        id:<input type="hidden" name="id" value="1" />
+        username:<input type="text" name="username" value="zhangsan" /><br />
         province:<input type="text" name="address.province" value="山东" /><br />
         city:<input type="text" name="address.city" value="济南" /><br />
         <input type="submit" value="submit" />

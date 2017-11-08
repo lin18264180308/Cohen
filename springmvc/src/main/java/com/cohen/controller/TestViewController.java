@@ -60,6 +60,7 @@ public class TestViewController {
 
     /**
      * 当请求该controller的任意一个方法时，都会先执行注解了@ModelAttribute的方法
+     * springmvc会从map中取出放入的对象，并将该对象作为其他方法的入参传入，放入map中时的键名，必须和方法入参的参数类型首字母小写的字符串一致
      */
     @ModelAttribute
     public void getUser(@RequestParam(value = "id", required = false) Integer id, Map<String, Object> map) {
@@ -73,11 +74,12 @@ public class TestViewController {
             user.setAddress(addr);
             System.out.println("先从数据库查询user" + user);
             map.put("user", user);
-        } else {
-            System.out.println("id为空");
         }
     }
 
+    /**
+     * 用@ModelAttribute修饰的方法，
+     */
     @RequestMapping(value = "/testModelAttribute", method = RequestMethod.POST)
     public String testModelAttribute(User user) {
         System.out.println("修改：" + user);
