@@ -1,0 +1,62 @@
+/**
+ * @ClassName: status_page.css
+ * @Author NiWeiDaYe
+ * @Description: 柱状展示样式设计
+ * @Date: 2017-10-20
+ */
+#show_are{
+	width: 1005px;
+    margin-left: 2%;
+    margin-top: -1%;
+}
+#machine_list{
+	margin: 2%;
+}
+#machine_list a{
+	text-decoration: none;
+}
+
+#div1,#div10,#div11,#div11_1,#div10_1,#div1_1,#div1_1_1,#div2,#div2_2,#div3,#div3_3,#div4,#div5{
+    margin-top: 10px;
+    height: 20px;
+    border-bottom: 5px solid #CDC0B0;
+}
+#div10 div{
+    float: left;
+}
+#div10_1 div{
+    float: left;
+}
+#div11 div{
+    float: left;
+}
+#div11_1 div{
+    float: left;
+}
+#div1 div{
+    float: left;
+}
+#div1_1 div{
+    float: left;
+}
+#div1_1_1 div{
+    float: left;
+}
+#div2 div{
+    float: left;
+}
+#div2_2 div{
+    float: left;
+}
+#div3 div{
+    float: left;
+}
+#div3_3 div{
+    float: left;
+}
+#div4 div{
+    float: left;
+}
+#div5 div{
+    float: left;
+}

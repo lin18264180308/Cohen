@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="admin" namespace="/admin" extends="abstract_package">
+
+        <!-- 六大损失分解报表 ——参数：begin  end -->
+        <action name="lossDecomposition" class="lossDecompositionAction" method="loadData">
+            <result name="json" type="json">
+                <param name="root">lossDecomposition</param>
+            </result>
+        </action>
+
+        <!-- 速度损失报表 ——参数：begin  end -->
+        <action name="speedLossArea" class="speedLossAreaAction" method="loadData">
+            <result name="json" type="json">
+                <param name="root">speedArea</param>
+            </result>
+        </action>
+
+        <!-- 计划停机损失报表 ——参数：begin  end -->
+        <action name="scheduledDownTime" class="scheduledDownTimeAction" method="loadData">
+            <result name="json" type="json">
+                <param name="root">scheduledDownTime</param>
+            </result>
+        </action>
+
+        <!-- 因果损失报表 ——参数：begin  end -->
+        <action name="causalLoss" class="causalLossAction" method="loadData">
+            <result name="json" type="json">
+                <param name="root">causalLoss</param>
+            </result>
+        </action>
+
+        <!-- 绩效曲线报表 ——参数：begin  end -->
+        <action name="performanceCurve" class="performanceCurveAction" method="loadData">
+            <result name="json" type="json"></result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.mrong.lineview.common.entity.HaltBean" table="haltbean">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="machineName" type="java.lang.String">
+            <column name="machine_Name" />
+        </property>
+        <property name="outageClassification" type="java.lang.String">
+            <column name="OC" />
+        </property>
+        <property name="showdownTimers" type="java.lang.String">
+            <column name="SHOWDOWN_TIMERS" />
+        </property>
+        <property name="startTime" type="java.util.Date">
+            <column name="START_TIME" />
+        </property>
+        <property name="stopTime" type="java.util.Date">
+            <column name="STOP_TIME" />
+        </property>
+        <property name="duration" type="java.lang.String">
+            <column name="DURATION" />
+        </property>
+    </class>
+</hibernate-mapping>

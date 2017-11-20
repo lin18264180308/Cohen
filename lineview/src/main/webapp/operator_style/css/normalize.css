@@ -1,0 +1,16 @@
+a:focus {
+	outline: 0;
+}
+
+a:active,a:hover {
+	outline: 0;
+}
+
+svg:not (:root ){
+	overflow: hidden;
+}
+
+input[type="checkbox"],input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}

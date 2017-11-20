@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="abstract_package" namespace="/" abstract="true" extends="struts-default,json-default">
+        <!-- 未登录拦截器 -->
+        <interceptors>
+            <interceptor name="checkLogin" class="checkLoginInterceptor" />
+            <interceptor-stack name="myInterceptor">
+                <interceptor-ref name="checkLogin" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <global-results>
+            <result name="login" type="redirect">/login.jsp</result>
+        </global-results>
+        <!-- 支持通配符 -->
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+    </package>
+
+    <!-- 登入登出 -->
+    <package name="default" namespace="/" extends="abstract_package">
+        <!-- 用户 -->
+        <action name="user-*" class="userAction" method="{1}">
+            <result name="success" type="redirect">index.jsp</result>
+            <result name="input" type="redirect">login.jsp</result>
+            <result name="admin">/WEB-INF/admin/admin.jsp</result>
+        </action>
+    </package>
+
+    <include file="conf/struts-admin.xml"></include>
+    <include file="conf/struts-operator.xml"></include>
+</struts>

@@ -1,0 +1,14 @@
+M2_8;S7:[S7 connection_6]QX10.5
+M2_10;S7:[S7 connection_6]QX10.7
+M2_12;S7:[S7 connection_6]QX11.0
+M2_14;S7:[S7 connection_6]QX11.2
+M2_15;S7:[S7 connection_6]QX11.3
+M2_16;S7:[S7 connection_6]QX11.4
+M2_17;S7:[S7 connection_6]QX11.5
+M2_18;S7:[S7 connection_6]QX11.6
+M3_19;S7:[S7 connection_7]QX4.4
+M3_20;S7:[S7 connection_7]QX4.5
+M3_21;S7:[S7 connection_7]QX4.6
+M26;S7:[S7 connection_7]IX1.5
+
+I2.7;S7:[S7 connection_7]IX2.7

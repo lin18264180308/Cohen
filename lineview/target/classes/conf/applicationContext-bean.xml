@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 拦截器 -->
+    <bean id="checkLoginInterceptor" class="com.mrong.lineview.interceptor.CheckLogin"></bean>
+    <!-- 用户 -->
+    <bean id="userDao" class="com.mrong.lineview.common.dao.impl.UserDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="userService" class="com.mrong.lineview.common.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+    <bean id="userAction" class="com.mrong.lineview.common.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    
+    <!-- 班次查询 -->
+    <bean id="teamSelectionDao" class="com.mrong.lineview.operator.dao.impl.TeamSelectionDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="teamSelectionService" class="com.mrong.lineview.operator.service.impl.TeamSelectionServiceImpl">
+        <property name="teamSelectionDao" ref="teamSelectionDao"></property>
+    </bean>
+    <bean id="teamSelectionAction" class="com.mrong.lineview.operator.action.TeamSelectionAction">
+        <property name="teamSelectionService" ref="teamSelectionService"></property>
+    </bean>
+    
+    <!--模式更改 -->
+    <bean id="modeChangeDao" class="com.mrong.lineview.operator.dao.impl.ModeChangeDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="modeChangeService" class="com.mrong.lineview.operator.service.impl.ModeChangeServiceImpl">
+        <property name="modeChangeDao" ref="modeChangeDao"></property>
+    </bean>
+    <bean id="modeChangeAction" class="com.mrong.lineview.operator.action.ModeChangeAction">
+        <property name="modeChangeService" ref="modeChangeService"></property>
+    </bean>
+    
+    <!-- 整线一览 -->
+    <bean id="onlineService" class="com.mrong.lineview.common.service.impl.OnlineServiceImpl">
+        <property name="haltDao" ref="haltDao"></property>
+    </bean>
+    <bean id="onlineAction" class="com.mrong.lineview.common.action.OnlineAction">
+        <property name="onlineService" ref="onlineService"></property>
+    </bean>
+    
+    <!-- 备注总览 -->
+    <bean id="remarkDao" class="com.mrong.lineview.operator.dao.impl.RemarkDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="remarkService" class="com.mrong.lineview.operator.service.impl.RemarkServiceImpl">
+        <property name="remarkDao" ref="remarkDao"></property>
+    </bean>
+    <bean id="remarkAction" class="com.mrong.lineview.operator.action.RemarkAction">
+        <property name="remarkService" ref="remarkService"></property>
+    </bean>
+    
+    <!-- 获取机台实时状态初始化 -->
+    <bean id="onlinehistoryDao" class="com.mrong.lineview.common.dao.impl.OnlineDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="onlinehistoryService" class="com.mrong.lineview.common.service.impl.OnlineServiceImpl">
+        <property name="onlinehistoryDao" ref="onlinehistoryDao"></property>
+    </bean>
+    <bean id="machineStatusAction" class="com.mrong.lineview.operator.action.MachineStatusAction">
+        <property name="onlineService" ref="onlinehistoryService"></property>
+        <property name="dataAnalyseAdapter"  ref="dataAnalyseAdapter"></property>
+        <property name="currentSpeedService"  ref="currentSpeedService"></property>
+    </bean>
+    
+    <!-- 四大机台的大停机小停机（点击模式切换触发） -->
+    <bean id="haltDao" class="com.mrong.lineview.common.dao.impl.HaltDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="haltService" class="com.mrong.lineview.common.service.impl.HaltServiceImpl">
+        <property name="haltDao" ref="haltDao"></property>
+    </bean>
+    <bean id="haltAction" class="com.mrong.lineview.common.action.HaltAction">
+        <property name="haltService" ref="haltService"></property>
+    </bean>
+
+    <!-- 柱状图action、时间选择（动态） -->
+    <bean id="statusViewAction" class="com.mrong.lineview.operator.action.StatusViewAction">
+        <property name="dataAnalyseAdapter" ref="dataAnalyseAdapter"></property>
+        <property name="timeChooseService" ref="timeChooseService"></property>
+        <property name="threeMajorIndicatorsService" ref="threeMajorIndicatorsService"></property>
+    </bean>
+
+    <!-- 时间选择（静态） -->
+    <bean id="timeChooseAction" class="com.mrong.lineview.operator.action.TimeChooseAction">
+        <property name="timeChooseService" ref="timeChooseService"></property>
+    </bean>
+    
+    <!-- 柱状图Dao层 -->
+    <bean id="statusViewDao" class="com.mrong.lineview.operator.dao.impl.StatusViewDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    
+    <!-- 时间选择Dao层 -->
+    <bean id="timeChooseDao" class="com.mrong.lineview.operator.dao.impl.TimeChooseDaoImpl">
+    <!-- 
+        <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    
+    <!-- 分析酒机白条业务类 -->
+    <bean id="analysFillingMachine" class="com.mrong.lineview.operator.service.impl.AnalysFillingMachine">
+       <property name="machineStopFrequencyDao" ref="machineStopFrequencyDao"></property>
+    </bean>
+    
+    <!-- 适配器类，多例，实现多个action对应单个数据处理的service -->
+    <bean id="dataAnalyseAdapter" scope="prototype" class="com.mrong.lineview.operator.service.impl.DataAnalyseAdapter">
+        <property name="statusViewServiceImpl" ref="statusViewServiceImpl"></property>
+    </bean>
+    
+    <!-- 机台数据处理类 -->
+    <bean id="machineStopAnalyse" class="com.mrong.lineview.operator.service.impl.MachineStopAnalyse">
+        <property name="timeChooseDao" ref="timeChooseDao"></property>
+        <property name="analysFillingMachine" ref="analysFillingMachine"></property>
+    </bean>
+    
+    <!-- 数据库数据采集类 -->
+    <bean id="statusViewServiceImpl" class="com.mrong.lineview.operator.service.impl.StatusViewServiceImpl">
+        <property name="machineStopAnalyse" ref="machineStopAnalyse"></property>
+        <property name="statusViewDao" ref="statusViewDao"></property>
+    </bean>
+    
+    <!-- 时间选择service层 -->
+    <bean id="timeChooseService" scope="prototype" class="com.mrong.lineview.operator.service.impl.TimeChooseServiceImpl">
+        <property name="timeChooseDao" ref="timeChooseDao"></property>
+    </bean>
+    <!-- 线上检查表 -->
+    <bean id="onlineCheckDao" class="com.mrong.lineview.operator.dao.impl.OnlineCheckDaoImpl">
+    <!-- 
+    <property name="sessionFactory" ref="sessionFactory"></property>
+     -->
+    </bean>
+    <bean id="onlineCheckService" class="com.mrong.lineview.operator.service.impl.OnlineCheckServiceImpl">
+    <property name="onlineCheckDao" ref="onlineCheckDao"></property>
+    </bean>
+    <bean id="OnlineCheckAction" class="com.mrong.lineview.operator.action.OnlineCheckAction" scope="prototype">
+    <property name="onlineCheckService" ref="onlineCheckService"></property>
+    </bean>
+    <!--  机台实时速度+记录的瓶数 
+    <bean id="speedMachineDao" class="com.mrong.lineview.operator.dao.impl.SpeedMachineDaoImpl">
+    <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="speedMachineService" class="com.mrong.lineview.operator.service.impl.SpeedMachineServiceImpl">
+    <property name="speedMachineDao" ref="speedMachineDao"></property>
+    </bean>
+    <bean id="speedMachineAction" class="com.mrong.lineview.operator.action.SpeedMachineAction" scope="prototype">
+    <property name="speedMachineService" ref="speedMachineService"></property>
+    </bean> -->
+    <!-- 返回机台的指标 -->
+    <bean id="machineCalculationAction" class="com.mrong.lineview.operator.action.MachineCalculationAction">
+    <property name="modeChangeDao" ref="modeChangeDao"></property>
+    </bean>
+    <!-- 机台实时速率 -->
+    <bean id="currentSpeedDao" class="com.mrong.lineview.operator.dao.impl.CurrentSpeedDaoImpl"></bean>
+    <bean id="currentSpeedService" class="com.mrong.lineview.operator.service.impl.CurrentSpeedServiceImpl">
+       <property name="currentSpeedDao" ref="currentSpeedDao"></property>
+    </bean>
+    <!-- 机台当前的故障信息以及开始时间 -->
+    <bean id="currentBreakDownDao" class="com.mrong.lineview.operator.dao.impl.CurrentBreakDownDaoImpl"></bean>
+    <bean id="currentBreakDownService" class="com.mrong.lineview.operator.service.impl.CurrentBreakDownServiceImpl">
+       <property name="currentBreakDownDao" ref="currentBreakDownDao"></property>
+    </bean>
+    <bean id="currentBreakDownAction" class="com.mrong.lineview.operator.action.CurrentBreakDownAction">
+       <property name="currentBreakDownService" ref="currentBreakDownService"></property>
+    </bean>
+    <!-- 三大指标 -->
+    <bean id="threeMajorIndicatorsDao" class="com.mrong.lineview.operator.dao.impl.ThreeMajorIndicatorsDaoImpl"></bean>
+    <bean id="threeMajorIndicatorsService" class="com.mrong.lineview.operator.service.impl.ThreeMajorIndicatorsServiceImpl">
+        <property name="threeMajorIndicatorsDao" ref="threeMajorIndicatorsDao"></property>
+    </bean>
+    <bean id="machineStopFrequencyDao" class="com.mrong.lineview.operator.dao.impl.MachineStopFrequencyDaoImpl"></bean>
+</beans>
