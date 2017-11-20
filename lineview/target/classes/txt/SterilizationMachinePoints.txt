@@ -1,8 +1,0 @@
-
-2#温区温度过低;S7:[S7 connection_3]DB39,X20.2
-3#温区温度过低;S7:[S7 connection_3]DB39,X20.4
-4#温区温度过低;S7:[S7 connection_3]DB39,X20.6
-5#温区温度过低;S7:[S7 connection_3]DB39,X21.0
-6#温区温度过低;S7:[S7 connection_3]DB39,X21.2
-8#温区温度过低;S7:[S7 connection_3]DB39,X21.6
-上、下层堵瓶标志;S7:[S7 connection_3]DB7,X8.0
