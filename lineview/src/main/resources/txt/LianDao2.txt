@@ -1,6 +1,0 @@
-M2_29;S7:[S7 connection_6]QX11.7
-M2_30;S7:[S7 connection_6]QX14.0
-M2_31;S7:[S7 connection_6]QX15.0
-M2_32;S7:[S7 connection_6]QX14.1
-M2_33;S7:[S7 connection_6]QX14.2
-3_H5;S7:[S7 connection_7]QX4.7

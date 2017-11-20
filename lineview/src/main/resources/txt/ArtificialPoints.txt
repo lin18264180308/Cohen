@@ -1,8 +1,0 @@
-M2_8;S7:[S7 connection_6]MX8.0
-M2_10;S7:[S7 connection_6]MX10.0
-M2_12;S7:[S7 connection_6]MX11.0
-M2_14;S7:[S7 connection_6]MX14.0
-M2_15;S7:[S7 connection_6]MX15.0
-M2_16;S7:[S7 connection_6]MX16.0
-M2_17;S7:[S7 connection_6]MX17.0
-M2_18;S7:[S7 connection_6]MX18.0
